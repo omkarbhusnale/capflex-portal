@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import "../styles/Home.css";
-import Carousel from "../components/Carousel";
-import LoanTypes from "../components/LoanTypes";
-import Testimonials from "../components/Testimonials";
-import Partners from "../components/Partners";
-import EMICalculator from "../components/EMICalculator";
-import CompanyIntro from "../components/CompanyIntro";
+import { Link } from 'react-router-dom';
+import '../styles/Home.css';
+import Carousel from '../components/Carousel';
+import LoanTypes from '../components/LoanTypes';
+import Testimonials from '../components/Testimonials';
+import Partners from '../components/Partners';
+import EMICalculator from '../components/EMICalculator';
+import CompanyIntro from '../components/CompanyIntro';
 
 const Home = () => {
   return (
@@ -22,9 +22,7 @@ const Home = () => {
       <section className="section loan-types-section">
         <div className="container">
           <h3 className="section-subtitle">What We're Offering</h3>
-          <h2 className="section-title">
-            Discover Customized Loan Solutions Now
-          </h2>
+          <h2 className="section-title">Discover Customized Loan Solutions Now</h2>
           <LoanTypes />
         </div>
       </section>
@@ -33,9 +31,7 @@ const Home = () => {
       <section className="section emi-section">
         <div className="container">
           <h3 className="section-subtitle">Plan Your EMI</h3>
-          <h2 className="section-title">
-            Smart EMI, Easy Loans, Quick Decisions!
-          </h2>
+          <h2 className="section-title">Smart EMI, Easy Loans, Quick Decisions!</h2>
           <EMICalculator fullMode={true} title="" subtitle="" />
         </div>
       </section>
@@ -50,39 +46,30 @@ const Home = () => {
               <div className="features-list">
                 <div className="feature">
                   <div className="feature-icon">✓</div>
-                  <div className="feature-text">
-                    Very Low Interest Rates on All Loans
-                  </div>
+                  <div className="feature-text">Very Low Interest Rates on All Loans</div>
                 </div>
                 <div className="feature">
                   <div className="feature-icon">✓</div>
-                  <div className="feature-text">
-                    99.9% Success Rate Guarantee
-                  </div>
+                  <div className="feature-text">99.9% Success Rate Guarantee</div>
                 </div>
                 <div className="feature">
                   <div className="feature-icon">✓</div>
-                  <div className="feature-text">
-                    Flexible with Your Repayments
-                  </div>
+                  <div className="feature-text">Flexible with Your Repayments</div>
                 </div>
               </div>
             </div>
             <div className="business-description">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque ut purus sit amet risus tincidunt consectetur.
-                Phasellus imperdiet neque non justo condimentum feugiat.
-                Praesent orci massa, fringilla non convallis sed, aliquam a
-                metus. Aliquam convallis arcu non nibh gravida, ut lacinia metus
-                ornare. Aenean in nulla nec arcu facilisis faucibus. Duis
-                egestas euismod purus vitae hendrerit. Aliquam erat volutpat.
-                Suspendisse nec massa nec augue bibendum convallis. Cras
-                vehicula nunc vitae dictum lacinia. Nulla ut cursus nisi, vitae
-                mollis arcu. Nunc dapibus fringilla velit, et posuere magna
-                fringilla in. Maecenas convallis lorem eu nisi facilisis, ac
-                euismod tortor maximus. Cras rhoncus purus tincidunt, elementum
-                ex sed, aliquam lacus.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut purus sit
+                amet risus tincidunt consectetur. Phasellus imperdiet neque non justo condimentum
+                feugiat. Praesent orci massa, fringilla non convallis sed, aliquam a metus. Aliquam
+                convallis arcu non nibh gravida, ut lacinia metus ornare. Aenean in nulla nec arcu
+                facilisis faucibus. Duis egestas euismod purus vitae hendrerit. Aliquam erat
+                volutpat. Suspendisse nec massa nec augue bibendum convallis. Cras vehicula nunc
+                vitae dictum lacinia. Nulla ut cursus nisi, vitae mollis arcu. Nunc dapibus
+                fringilla velit, et posuere magna fringilla in. Maecenas convallis lorem eu nisi
+                facilisis, ac euismod tortor maximus. Cras rhoncus purus tincidunt, elementum ex
+                sed, aliquam lacus.
               </p>
             </div>
           </div>

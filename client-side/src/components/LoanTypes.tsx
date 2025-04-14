@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/LoanTypes.css';
-import bullet from '../assets/Home/bullet.png';
+import bullet from '../assets/Home/Bullet.png';
 
 interface LoanType {
   id: string;

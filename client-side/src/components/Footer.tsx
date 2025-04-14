@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
-import logo from '/logo.svg';
+import logo from '../assets/logo.svg';
 import facebookIcon from '../assets/MediaIcons/FacebookIcon.png';
 import twitterIcon from '../assets/MediaIcons/TwitterIcon.png';
 import instagramIcon from '../assets/MediaIcons/InstagramIcon.png';
