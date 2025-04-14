@@ -1,0 +1,726 @@
+.loan-calculator {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+  background-color: white;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Top section with buttons and dropdown */
+.calculator-selection {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.calculator-btn {
+  padding: 0.75rem 2rem;
+  background-color: white;
+  color: #083277;
+  border: 2px solid #00a0f0;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  min-width: 180px;
+  text-align: center;
+  outline: none !important;
+}
+
+.calculator-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.calculator-btn.active {
+  background-color: #00a0f0;
+  color: white;
+}
+
+.calculator-btn:hover {
+  background-color: #00a0f0;
+  color: white;
+}
+
+/* Product Selector */
+.product-selector {
+  margin-left: 1rem;
+  margin-bottom: 0;
+}
+
+.select-dropdown {
+  position: relative;
+  width: 200px;
+  max-width: 100%;
+  z-index: 10;
+}
+
+.select-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 0 10px rgba(64, 73, 83, 0.5);
+  border-radius: 50px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: var(--accent-color);
+  outline: none !important;
+}
+
+.select-box:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.select-box:hover {
+  border-color: #00a0f0;
+  background-color: #f0f9ff;
+}
+
+.select-box span {
+  font-weight: 500;
+}
+
+.select-box .arrow {
+  font-size: 10px;
+  color: #00a0f0;
+  transition: transform 0.3s ease;
+}
+
+.arrow {
+  font-size: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  filter: invert(50%) sepia(75%) saturate(2416%) hue-rotate(169deg) brightness(103%) contrast(105%);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-top: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item.active {
+  background-color: var(--light-blue);
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* Calculator Tabs */
+.calculator-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+  width: fit-content;
+  margin: 0 auto 20px;
+  gap: 10px;
+}
+
+.calculator-tab {
+  padding: 12px 24px;
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid var(--accent-color);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+}
+
+.calculator-tab:hover {
+  background-color: var(--light-blue);
+}
+
+.calculator-tab.active {
+  background-color: var(--accent-color);
+  color: white;
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 4px 8px rgba(0, 177, 255, 0.2);
+}
+
+/* Calculator Body */
+.calculator-body {
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 1px 10px rgba(8, 5, 5, 0.2);
+}
+
+.calculator-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* Calculator Inputs */
+.calculator-inputs {
+  flex: 1;
+  min-width: 200px;
+  border-radius: 12px;
+  padding: 25px;
+  background-color: white;
+}
+
+.input-field {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.input-field label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #003277;
+  margin-bottom: 15px;
+  float: none;
+  text-align: left;
+}
+
+.value-display {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ff3b3b;
+  margin-bottom: 15px;
+  float: none;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.input-field::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.display-value {
+  margin: 0 5px;
+}
+
+.currency-symbol {
+  color: #ff3b3b;
+  font-weight: 500;
+}
+
+.percent-symbol {
+  color: #ff3b3b;
+  font-weight: 500;
+}
+
+/* Tenure Type Display */
+.tenure-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  clear: both;
+  position: relative;
+}
+
+.tenure-type-selector {
+  position: static;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50px;
+  margin-top: 0;
+  right: auto;
+  top: auto;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tenure-type-selector button {
+  padding: 8px 15px;
+  background-color: #e0f3ff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #083277;
+  transition: all 0.3s ease;
+  outline: none !important;
+  font-weight: 600;
+  border-radius: 0;
+  float: left;
+}
+
+.tenure-type-selector button:first-child {
+  border-radius: 50px 0 0 50px;
+}
+
+.tenure-type-selector button:last-child {
+  border-radius: 0 50px 50px 0;
+}
+
+.tenure-type-selector button.active {
+  background-color: #083277;
+  color: white;
+  border-color: #083277;
+}
+
+/* Range slider */
+.range-slider {
+  width: 100%;
+  margin-bottom: 20px;
+  clear: both;
+  position: relative;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #e0f3ff;
+  outline: none !important;
+  margin-bottom: 10px;
+}
+
+.slider:focus {
+  outline: none !important;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #003277;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  outline: none !important;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #003277;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  outline: none !important;
+}
+
+.range-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+  padding: 0 2px;
+  font-weight: 500;
+}
+
+/* Calculator Results */
+.calculator-results {
+  flex: 1.3;
+  min-width: 300px;
+  border-radius: 12px;
+  padding: 25px;
+  background-color: white;
+}
+
+.result-breakdown {
+  text-align: center;
+}
+
+.result-breakdown h2 {
+  font-size: 30px;
+  color: var(--accent-color);
+  margin-bottom: 30px;
+  font-weight: 650;
+}
+
+/* Pie Chart */
+.pie-chart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.pie-chart {
+  width: 240px;
+  height: 240px;
+  margin-bottom: 20px;
+}
+
+.pie-segments svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.principal-segment,
+.interest-segment {
+  transition: stroke-dasharray 0.2s ease-in-out, stroke-dashoffset 0.2s ease-in-out;
+}
+
+/* Payment Breakdown */
+.payment-breakdown {
+  width: 40%;
+  margin-left: 10%;
+}
+
+.breakdown-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.breakdown-item.principal {
+  background-color: rgba(0, 177, 255, 0.1);
+}
+
+.breakdown-item.interest {
+  background-color: rgba(3, 50, 119, 0.1);
+}
+
+.breakdown-item.total {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.principal-dot {
+  background-color: #00a0f0;
+}
+
+.interest-dot {
+  background-color: #083277;
+}
+
+.label {
+  flex: 1;
+}
+
+.value {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Monthly EMI Box */
+.monthly-emi {
+  margin-top: 30px;
+  background-color: #083277;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.monthly-emi h3 {
+  font-size: 18px;
+  color: white;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.emi-amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+}
+
+.apply-now-btn {
+  display: block;
+  width: 100%;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.apply-now-btn:hover {
+  background-color: #0089cc;
+  transform: translateY(-2px);
+}
+
+.apply-now-btn .arrow {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+/* Eligibility Info */
+.eligibility-info {
+  text-align: center;
+  padding: 40px;
+}
+
+.eligibility-info h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.eligibility-info p {
+  color: #666;
+}
+
+/* Eligibility Calculator Styles */
+.eligibility-results {
+  flex: 1.3;
+  min-width: 300px;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.eligibility-results h2 {
+  font-size: 28px;
+  color: #083277;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.eligibility-results h3 {
+  font-size: 20px;
+  color: #083277;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.eligibility-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.total-loan-amount,
+.monthly-emi {
+  width: 100%;
+  background-color: #083277;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+}
+
+.total-loan-amount h3,
+.monthly-emi h3 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.total-loan-amount .amount,
+.monthly-emi .emi-amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+}
+
+.monthly-emi {
+  background-color: #00a0f0;
+}
+
+.calculator-results .btn,
+.eligibility-results .btn {
+  margin-top: 25px;
+  padding: 15px 30px;
+  background-color: #00a0f0;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: auto;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  outline: none !important;
+  margin: 40px auto;
+}
+
+.calculator-results .btn:focus,
+.eligibility-results .btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.calculator-results .btn .arrow,
+.eligibility-results .btn .arrow {
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.calculator-results .btn:hover,
+.eligibility-results .btn:hover {
+  background-color: #0090dd;
+  transform: translateY(-2px);
+}
+
+/* Remove the black outlines in Firefox */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .calculator-content {
+    flex-direction: column;
+  }
+
+  .calculator-inputs,
+  .calculator-results,
+  .eligibility-results {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .calculator-body {
+    padding: 15px;
+  }
+
+  .calculator-selection {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .calculator-btn {
+    margin-bottom: 10px;
+  }
+
+  .product-selector {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .select-dropdown {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .monthly-emi,
+  .total-loan-amount {
+    padding: 15px;
+  }
+
+  .emi-amount,
+  .amount {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .value-display {
+    font-size: 18px;
+  }
+
+  .tenure-type-selector button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .range-values {
+    font-size: 10px;
+  }
+
+  .emi-amount,
+  .amount {
+    font-size: 22px;
+  }
+
+  .calculator-results .btn,
+  .eligibility-results .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-width: 150px;
+  }
+}
+
+/* Global outline removal */
+button,
+input,
+select,
+a {
+  outline: none !important;
+}
+
+button:focus,
+input:focus,
+select:focus,
+a:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Override bootstrap or any framework outline styles */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Tenure Type Selector specific styling */
+.input-field:nth-child(3) .tenure-type-selector {
+  position: absolute;
+  top: 0;
+  left: 40%;
+  transform: translateX(-50%);
+  margin-bottom: 20px;
+}
+
+.input-field:nth-child(3) .range-slider {
+  margin-top: 20px;
+}

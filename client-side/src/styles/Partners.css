@@ -1,0 +1,126 @@
+.partners-carousel-container {
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.partners-track {
+  display: flex;
+  width: fit-content;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partners-carousel {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.partner-card {
+  flex: 0 0 auto;
+  width: 12vw;
+  height: 100px;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  transition: transform 0.3s ease;
+  margin-right: 0.01rem; /* Consistent gap between all cards */
+}
+
+.partner-card:last-child {
+  margin-right: 0; /* Remove margin from last card to prevent extra space */
+}
+
+.partners-carousel-container:hover .partners-track {
+  animation-play-state: running;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(21, 71, 142, 0.4);
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem;
+  color: var(--dark-gray);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.partner-logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 992px) {
+  .partner-card {
+    width: 180px;
+    margin-right: 1.5rem;
+  }
+
+  .partners-track {
+    animation-duration: 25s;
+  }
+}
+
+@media (max-width: 768px) {
+  .partner-card {
+    width: 160px;
+    margin-right: 1.5rem;
+  }
+
+  .partners-track {
+    animation-duration: 20s;
+  }
+}
+
+@media (max-width: 576px) {
+  .partner-card {
+    width: 140px;
+    margin-right: 1rem;
+  }
+
+  .partners-carousel {
+    gap: 1.5rem;
+  }
+
+  .partners-track {
+    animation-duration: 15s;
+  }
+}
+
+@media (max-width: 375px) {
+  .partner-card {
+    width: 120px;
+    margin-right: 1rem;
+  }
+
+  .partners-carousel {
+    gap: 1rem;
+  }
+
+  .partners-track {
+    animation-duration: 12s;
+  }
+}

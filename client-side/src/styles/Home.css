@@ -1,0 +1,238 @@
+.home-page {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  background-color: var(--light-gray);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 600px;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--dark-gray);
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Loan Types Section */
+.loan-types-section {
+  background-color: var(--white);
+}
+
+/* EMI Section */
+.emi-section {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.calculator-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Business Loan Section */
+.business-section {
+  background-color: var(--white);
+  padding: 4rem 0;
+}
+
+.business-content h3 {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.business-content h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.features-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--light-gray);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+.feature-text {
+  font-weight: 500;
+}
+
+.business-description p {
+  line-height: 1.8;
+}
+
+/* Partners Section */
+.partners-section {
+  background-color: var(--light-gray);
+  padding: 4rem 0;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  background-color: var(--white);
+  padding: 4rem 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-content {
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.user-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+}
+
+/* CTA Section */
+.cta-section {
+  background-color: var(--light-gray);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  margin-bottom: 2rem;
+  color: var(--dark-gray);
+}
+
+/* Loan Types Carousel Section */
+.loan-types-carousel-section {
+  padding: 2rem 0;
+  background-color: var(--light-gray);
+  overflow: hidden;
+  position: relative;
+}
+
+.loan-carousel-container {
+  position: relative;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background-color: var(--accent-color);
+  color: var(--white);
+  border-color: var(--accent-color);
+}
+
+.carousel-arrow-prev {
+  left: 5px;
+}
+
+.carousel-arrow-next {
+  right: 5px;
+}
+
+@media (max-width: 768px) {
+  .carousel-arrow {
+    display: none;
+  }
+
+  .business-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .calculator-buttons {
+    flex-direction: column;
+  }
+}
