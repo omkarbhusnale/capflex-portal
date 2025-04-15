@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import logo from '../assets/logo.png';
@@ -7,6 +7,23 @@ import creditScoreIcon from '../assets/Home/CreditScore.png';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set scrolled to true if page is scrolled more than 50px
+      const isScrolled = window.scrollY > 50;
+      setScrolled(isScrolled);
+    };
+
+    // Add event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -24,8 +41,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="navbar">
-      <div className="container navbar-container">
+    <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
         <div className="logo">
           <Link to="/">
             <img src={logo} alt="CapitalFlex" className="logo-image" />

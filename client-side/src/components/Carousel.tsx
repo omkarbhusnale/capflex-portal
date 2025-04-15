@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import '../styles/Carousel.css';
 
 // Import banner images
-import BannerHomeLoan from '../assets/Home/BannerHomeLoan.png';
-import BannerPersonalLoan from '../assets/Home/BannerPersonalLoan.png';
+import BannerHomeLoan from '../assets/Home/Banners/HomeLoanBanner.png';
+import BannerPersonalLoan from '../assets/Home/Banners/PersonalLoanBanner.png';
+import BannerBusinessLoan from '../assets/Home/Banners/BusinessLoanBanner.png';
+import BannerCommercialVehicleLoan from '../assets/Home/Banners/CommercialVehicleLoanBanner.png';
+import BannerLoanAgainstProperty from '../assets/Home/Banners/LoanAgainstPropertyBanner.png';
+import BannerWorkingCapitalLoan from '../assets/Home/Banners/WorkingCapitalLoanBanner.png';
+import BannerReferEarn from '../assets/Home/Banners/ReferEarnBanner.png';
 
 interface CarouselItem {
   id: number;
@@ -47,7 +52,7 @@ const Carousel = () => {
       title: 'Business Loans Made Simple',
       subtitle: 'Fund your business growth with our flexible loan options.',
       loanType: 'Business Loan',
-      backgroundImage: BannerHomeLoan,
+      backgroundImage: BannerBusinessLoan,
       primaryCta: {
         text: 'Apply Now',
         url: '/apply',
@@ -71,6 +76,66 @@ const Carousel = () => {
       secondaryCta: {
         text: 'Learn More',
         url: '/services/home-loan',
+      },
+    },
+    {
+      id: 4,
+      title: 'Get Instant Approval on Commercial Vehicle Loans',
+      subtitle: 'Drive your business forward with our flexible commercial vehicle loan options.',
+      loanType: 'Commercial Vehicle Loan',
+      backgroundImage: BannerCommercialVehicleLoan,
+      primaryCta: {
+        text: 'Apply Now',
+        url: '/apply',
+      },
+      secondaryCta: {
+        text: 'Learn More',
+        url: '/services/commercial-vehicle-loan',
+      },
+    },
+    {
+      id: 5,
+      title: 'Get Instant Approval on Loan Against Property',
+      subtitle: 'Secure your future with our flexible loan options.',
+      loanType: 'Loan Against Property',
+      backgroundImage: BannerLoanAgainstProperty,
+      primaryCta: {
+        text: 'Apply Now',
+        url: '/apply',
+      },
+      secondaryCta: {
+        text: 'Learn More',
+        url: '/services/loan-against-property',
+      },
+    },
+    {
+      id: 6,
+      title: 'Get Instant Approval on Working Capital Loans',
+      subtitle: 'Fund your business growth with our flexible loan options.',
+      loanType: 'Working Capital Loan',
+      backgroundImage: BannerWorkingCapitalLoan,
+      primaryCta: {
+        text: 'Apply Now',
+        url: '/apply',
+      },
+      secondaryCta: {
+        text: 'Learn More',
+        url: '/services/working-capital-loan',
+      },
+    },
+    {
+      id: 7,
+      title: 'Refer and Earn',
+      subtitle: 'Earn rewards by referring friends to our services.',
+      loanType: 'Refer and Earn',
+      backgroundImage: BannerReferEarn,
+      primaryCta: {
+        text: 'Apply Now',
+        url: '/apply',
+      },
+      secondaryCta: {
+        text: 'Learn More',
+        url: '/services/refer-and-earn',
       },
     },
   ];

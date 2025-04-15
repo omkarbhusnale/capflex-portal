@@ -4,6 +4,13 @@
   z-index: 1000;
   padding: 35px 0;
   width: 100%;
+  transition: all 0.01s ease-in-out;
+}
+
+.navbar.scrolled {
+  padding: 10px 0;
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-container {
@@ -15,6 +22,15 @@
   padding: 0 20px;
   background-color: var(--primary-color);
   border-radius: 50px;
+  max-width: var(--max-width);
+  transition: all 0.01s ease-in-out;
+}
+
+.navbar-container.scrolled {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 0;
+  padding: 0 40px;
 }
 
 .logo-image {
@@ -156,6 +172,10 @@
     top: 14%;
   }
 
+  .navbar.scrolled .nav-menu.active {
+    top: 70px;
+  }
+
   .nav-list {
     flex-direction: column;
     width: 100%;
@@ -204,13 +224,6 @@
     padding: 0 20px;
     margin-top: 20px;
   }
-
-  /*
-  .btn {
-    width: 100%;
-    margin: 5px 0;
-  }
-  */
 
   .desktop-buttons {
     display: none;
