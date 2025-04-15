@@ -1,12 +1,12 @@
 import '../styles/Partners.css';
-import Axis from '../assets/partners/axis.png';
-import BOI from '../assets/partners/boi.png';
-import CBI from '../assets/partners/cbi.png';
-import ICICI from '../assets/partners/icici.png';
-import SBI from '../assets/partners/sbi.png';
-import Indian from '../assets/partners/indian.png';
-import Kotak from '../assets/partners/kotak.png';
-import Yes from '../assets/partners/yes.png';
+import Axis from '../assets/Partners/Axis.png';
+import BOI from '../assets/Partners/BOI.png';
+import CBI from '../assets/Partners/CBI.png';
+import ICICI from '../assets/Partners/ICICI.png';
+import SBI from '../assets/Partners/SBI.png';
+import Indian from '../assets/Partners/Indian.png';
+import Kotak from '../assets/Partners/Kotak.png';
+import Yes from '../assets/Partners/Yes.png';
 
 const Partners = () => {
   const partners = [

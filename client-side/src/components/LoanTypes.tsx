@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/LoanTypes.css';
-import bullet from '../assets/Home/bullet.png';
+import bullet from '../assets/Home/Bullet.png';
 
 interface LoanType {
   id: string;
@@ -262,11 +262,11 @@ const LoanTypes = () => {
           </div>
 
           <div className="loan-actions">
-            <Link to="/apply" className="btn btn-primary">
-              Apply Now <span className="arrow">›</span>
+            <Link to="/apply" className="btn-primary-icon">
+              Apply Now <span className="btn-icon">›</span>
             </Link>
-            <Link to={selectedLoanData.path} className="btn btn-secondary">
-              Learn More <span className="arrow">›</span>
+            <Link to={selectedLoanData.path} className="btn-secondary-icon">
+              Learn More <span className="btn-icon">›</span>
             </Link>
           </div>
         </div>

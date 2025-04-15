@@ -1,0 +1,148 @@
+.business-loan-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.business-loan-subtitle-container {
+  margin-bottom: 2rem;
+}
+
+.business-loan-content {
+  display: grid;
+  grid-template-columns: minmax(300px, 450px) 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  align-items: flex-start;
+}
+
+.business-loan-title-container {
+  padding-right: 1rem;
+}
+
+.business-loan-description-container {
+  padding-right: 1rem;
+}
+
+.business-loan-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  color: var(--dark-gray);
+  font-weight: 500;
+}
+
+.business-loan-title {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.business-loan-description {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  line-height: 1.5;
+}
+
+.business-loan-description p {
+  margin-bottom: 1rem;
+}
+
+.business-loan-description p:last-child {
+  margin-bottom: 0;
+}
+
+.business-loan-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.business-loan-card {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 54, 119, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  gap: 2.5rem;
+}
+
+.business-loan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 54, 119, 0.25);
+}
+
+.business-loan-card-icon {
+  margin-bottom: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.business-loan-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.business-loan-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .business-loan-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .business-loan-title-container {
+    padding-right: 0;
+  }
+
+  .business-loan-description-container {
+    padding-right: 0;
+  }
+
+  .business-loan-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .business-loan-cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .business-loan-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .business-loan-cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .business-loan-card {
+    padding: 1.5rem;
+  }
+
+  .business-loan-card-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
