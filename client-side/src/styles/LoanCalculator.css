@@ -21,8 +21,8 @@
 .calculator-btn {
   padding: 0.75rem 2rem;
   background-color: white;
-  color: #083277;
-  border: 2px solid #00a0f0;
+  color: var(--primary-color);
+  border: 2px solid var(--accent-color);
   border-radius: 50px;
   font-weight: 600;
   font-size: 1rem;
@@ -40,13 +40,14 @@
 }
 
 .calculator-btn.active {
-  background-color: #00a0f0;
+  background-color: var(--accent-color);
   color: white;
 }
 
 .calculator-btn:hover {
-  background-color: #00a0f0;
+  background-color: var(--accent-color);
   color: white;
+  border: 2px solid var(--accent-color);
 }
 
 /* Product Selector */
@@ -67,7 +68,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  box-shadow: 0 0 10px rgba(64, 73, 83, 0.5);
+  box-shadow: 0 0 10px rgba(64, 73, 83, 0.3);
   border-radius: 50px;
   background-color: white;
   cursor: pointer;
@@ -176,12 +177,15 @@
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 1px 10px rgba(8, 5, 5, 0.2);
+  margin-top: 50px;
 }
 
 .calculator-content {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Calculator Inputs */
@@ -194,7 +198,7 @@
 }
 
 .input-field {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -245,10 +249,10 @@
 .tenure-display {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 15px;
   clear: both;
   position: relative;
+  gap: 30px;
 }
 
 .tenure-type-selector {
@@ -260,20 +264,21 @@
   right: auto;
   top: auto;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  background-color: #98defd;
 }
 
 .tenure-type-selector button {
   padding: 8px 15px;
-  background-color: #e0f3ff;
+  background-color: #98defd;
   border: none;
   cursor: pointer;
   font-size: 14px;
-  color: #083277;
+  color: var(--primary-color);
   transition: all 0.3s ease;
   outline: none !important;
   font-weight: 600;
   border-radius: 0;
-  float: left;
+  float: right;
 }
 
 .tenure-type-selector button:first-child {
@@ -285,9 +290,9 @@
 }
 
 .tenure-type-selector button.active {
-  background-color: #083277;
+  background-color: var(--primary-color);
   color: white;
-  border-color: #083277;
+  border-color: var(--primary-color);
 }
 
 /* Range slider */
@@ -304,7 +309,7 @@
   width: 100%;
   height: 8px;
   border-radius: 4px;
-  background: #e0f3ff;
+  background: #98defd;
   outline: none !important;
   margin-bottom: 10px;
 }
@@ -319,9 +324,9 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #003277;
+  background: var(--white);
   cursor: pointer;
-  border: 3px solid white;
+  border: 4px solid var(--primary-color);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   outline: none !important;
 }
@@ -330,9 +335,9 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #003277;
+  background: var(--white);
   cursor: pointer;
-  border: 3px solid white;
+  border: 4px solid var(--primary-color);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   outline: none !important;
 }
@@ -372,78 +377,86 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   margin-bottom: 30px;
 }
 
 .pie-chart {
   width: 240px;
   height: 240px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-right: 80px;
 }
 
 .pie-segments svg {
   width: 100%;
   height: 100%;
-  overflow: visible;
 }
 
-.principal-segment,
+.principal-segment {
+  stroke: #00b1ff !important;
+  stroke-width: 15px;
+}
+
 .interest-segment {
-  transition: stroke-dasharray 0.2s ease-in-out, stroke-dashoffset 0.2s ease-in-out;
+  stroke: #98defd !important;
+  stroke-width: 15px;
 }
 
 /* Payment Breakdown */
 .payment-breakdown {
-  width: 40%;
-  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 0px;
 }
 
 .breakdown-item {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.breakdown-label {
+  display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  font-size: 14px;
-  padding: 10px;
-  border-radius: 8px;
+  margin-bottom: 5px;
 }
 
-.breakdown-item.principal {
-  background-color: rgba(0, 177, 255, 0.1);
+.breakdown-label span {
+  font-size: 18px;
+  color: var(--dark);
 }
 
-.breakdown-item.interest {
-  background-color: rgba(3, 50, 119, 0.1);
-}
-
-.breakdown-item.total {
-  background-color: #f5f5f5;
-  font-weight: 600;
-  margin-top: 10px;
+.breakdown-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-left: 20px;
 }
 
 .dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  margin-right: 10px;
-  flex-shrink: 0;
+  margin-right: 8px;
+  display: inline-block;
 }
 
 .principal-dot {
-  background-color: #00a0f0;
+  background-color: var(--accent-color);
 }
 
 .interest-dot {
-  background-color: #083277;
+  background-color: #98defd;
 }
 
-.label {
-  flex: 1;
+.breakdown-item.total {
+  margin-top: 5px;
 }
 
-.value {
-  font-weight: 500;
-  color: #333;
+.breakdown-item.total .breakdown-value {
+  font-weight: 600;
 }
 
 /* Monthly EMI Box */
@@ -496,7 +509,7 @@
 /* Eligibility Info */
 .eligibility-info {
   text-align: center;
-  padding: 40px;
+  padding: 50px;
 }
 
 .eligibility-info h3 {
@@ -515,18 +528,19 @@
   border-radius: 12px;
   padding: 20px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .eligibility-results h2 {
   font-size: 28px;
-  color: #083277;
+  color: var(--primary-color);
   margin-bottom: 10px;
   font-weight: 700;
 }
 
 .eligibility-results h3 {
   font-size: 20px;
-  color: #083277;
+  color: var(--primary-color);
   margin-bottom: 30px;
   font-weight: 500;
 }
@@ -541,7 +555,7 @@
 .total-loan-amount,
 .monthly-emi {
   width: 100%;
-  background-color: #083277;
+  background-color: var(--primary-color);
   padding: 20px;
   border-radius: 12px;
   color: white;
@@ -652,6 +666,40 @@ input::-moz-focus-inner {
     max-width: 300px;
   }
 
+  .pie-chart-container {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .pie-chart {
+    width: 240px;
+    height: 240px;
+    margin-bottom: 30px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .payment-breakdown {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding-top: 0px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .breakdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .breakdown-value {
+    margin-left: 0px;
+  }
+
   .monthly-emi,
   .total-loan-amount {
     padding: 15px;
@@ -713,7 +761,7 @@ a:focus {
 }
 
 /* Tenure Type Selector specific styling */
-.input-field:nth-child(3) .tenure-type-selector {
+.input-field:nth-child(3) .input-field:nth-child(4) .tenure-type-selector {
   position: absolute;
   top: 0;
   left: 40%;
@@ -721,6 +769,6 @@ a:focus {
   margin-bottom: 20px;
 }
 
-.input-field:nth-child(3) .range-slider {
+.input-field:nth-child(3) .input-field:nth-child(4) .range-slider {
   margin-top: 20px;
 }

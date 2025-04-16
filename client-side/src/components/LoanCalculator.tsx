@@ -27,6 +27,8 @@ interface LoanProductConfig {
   maxTenureYears: number;
   minIncome: number;
   maxIncome: number;
+  minMonthlyObligation: number;
+  maxMonthlyObligation: number;
 }
 
 interface LoanCalculatorProps {
@@ -54,6 +56,7 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
 
   // Eligibility Calculator States
   const [netIncome, setNetIncome] = useState<number>(2000);
+  const [monthlyObligation, setMonthlyObligation] = useState<number>(0);
 
   // Results
   const [monthlyEMI, setMonthlyEMI] = useState<number>(0);
@@ -69,32 +72,36 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
   // Product configurations
   const productConfigs: Record<LoanProductType, LoanProductConfig> = {
     'Personal Loan': {
-      minAmount: 10000,
-      maxAmount: 1500000,
+      minAmount: 100000,
+      maxAmount: 3000000,
       minInterest: 8,
       maxInterest: 30,
       minTenureMonths: 3,
       maxTenureMonths: 60,
       minTenureYears: 1,
       maxTenureYears: 5,
-      minIncome: 2000,
+      minIncome: 200000,
       maxIncome: 5000000,
+      minMonthlyObligation: 500,
+      maxMonthlyObligation: 100000,
     },
     'Business Loan': {
-      minAmount: 100000,
-      maxAmount: 5000000,
+      minAmount: 1000000,
+      maxAmount: 50000000,
       minInterest: 10,
       maxInterest: 25,
       minTenureMonths: 6,
       maxTenureMonths: 84,
       minTenureYears: 1,
       maxTenureYears: 7,
-      minIncome: 10000,
-      maxIncome: 10000000,
+      minIncome: 1000000,
+      maxIncome: 100000000,
+      minMonthlyObligation: 500,
+      maxMonthlyObligation: 100000,
     },
     'Home Loan': {
-      minAmount: 500000,
-      maxAmount: 50000000,
+      minAmount: 5000000,
+      maxAmount: 500000000,
       minInterest: 6,
       maxInterest: 15,
       minTenureMonths: 12,
@@ -103,6 +110,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
       maxTenureYears: 30,
       minIncome: 20000,
       maxIncome: 20000000,
+      minMonthlyObligation: 500,
+      maxMonthlyObligation: 100000,
     },
     'Auto Loan': {
       minAmount: 50000,
@@ -115,6 +124,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
       maxTenureYears: 7,
       minIncome: 10000,
       maxIncome: 5000000,
+      minMonthlyObligation: 500,
+      maxMonthlyObligation: 100000,
     },
     'Loan Against Property': {
       minAmount: 500000,
@@ -127,6 +138,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
       maxTenureYears: 20,
       minIncome: 25000,
       maxIncome: 30000000,
+      minMonthlyObligation: 500,
+      maxMonthlyObligation: 100000,
     },
     'Commercial Vehicle Loan': {
       minAmount: 200000,
@@ -139,6 +152,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
       maxTenureYears: 6,
       minIncome: 15000,
       maxIncome: 10000000,
+      minMonthlyObligation: 500,
+      maxMonthlyObligation: 100000,
     },
     'Working Capital Loan': {
       minAmount: 300000,
@@ -151,6 +166,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
       maxTenureYears: 5,
       minIncome: 25000,
       maxIncome: 15000000,
+      minMonthlyObligation: 500,
+      maxMonthlyObligation: 100000,
     },
   };
 
@@ -174,6 +191,14 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
 
     // Update net income within product range
     setNetIncome(Math.max(config.minIncome, Math.min(netIncome, config.maxIncome)));
+
+    // Update monthly obligation within product range
+    setMonthlyObligation(
+      Math.max(
+        config.minMonthlyObligation,
+        Math.min(monthlyObligation, config.maxMonthlyObligation)
+      )
+    );
   }, [selectedProduct]);
 
   // Handle selecting a product
@@ -208,7 +233,15 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
     } else {
       calculateEligibility();
     }
-  }, [loanAmount, loanDuration, durationType, interestRate, netIncome, calculatorType]);
+  }, [
+    loanAmount,
+    loanDuration,
+    durationType,
+    interestRate,
+    netIncome,
+    monthlyObligation,
+    calculatorType,
+  ]);
 
   // EMI calculation function
   const calculateEMI = () => {
@@ -247,7 +280,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
   // Eligibility calculation function
   const calculateEligibility = () => {
     // Typically, banks allow 40-50% of monthly income for EMI payments
-    const monthlyAllowedAmount = netIncome * 0.5;
+    // Subtract monthly obligations to get actual available amount for loan EMI
+    const monthlyAllowedAmount = netIncome * 0.5 - monthlyObligation;
 
     const monthlyInterestRate = interestRate / 100 / 12;
     const totalMonths = durationType === 'Year' ? loanDuration * 12 : loanDuration;
@@ -335,6 +369,7 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
             )}
           </div>
         </div>
+
         {/* EMI Calculator Buttons */}
         <button
           className={`calculator-btn ${calculatorType === 'emi' ? 'active' : ''}`}
@@ -342,6 +377,7 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
         >
           EMI Calculator
         </button>
+
         {/* Eligibility Calculator Buttons */}
         <button
           className={`calculator-btn ${calculatorType === 'eligibility' ? 'active' : ''}`}
@@ -401,24 +437,27 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
               </div>
 
               <div className="input-field">
-                <label htmlFor="loan-tenure">Loan Tenure</label>
-                <div className="tenure-type-selector">
-                  <button
-                    className={durationType === 'Months' ? 'active' : ''}
-                    onClick={() => toggleDurationType('Months')}
-                  >
-                    Months
-                  </button>
-                  <button
-                    className={durationType === 'Year' ? 'active' : ''}
-                    onClick={() => toggleDurationType('Year')}
-                  >
-                    Year
-                  </button>
+                <div className="tenure-display">
+                  <label htmlFor="loan-tenure">Loan Tenure</label>
+                  <div className="tenure-type-selector">
+                    <button
+                      className={durationType === 'Year' ? 'active' : ''}
+                      onClick={() => toggleDurationType('Year')}
+                    >
+                      Year
+                    </button>
+                    <button
+                      className={durationType === 'Months' ? 'active' : ''}
+                      onClick={() => toggleDurationType('Months')}
+                    >
+                      Months
+                    </button>
+                  </div>
+                  <div className="value-display" style={{ top: '0', right: '0' }}>
+                    <span className="display-value">{loanDuration}</span>
+                  </div>
                 </div>
-                <div className="value-display" style={{ top: '0', right: '0' }}>
-                  <span className="display-value">{loanDuration}</span>
-                </div>
+
                 <div className="range-slider">
                   <input
                     type="range"
@@ -454,7 +493,7 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
 
             <div className="calculator-results">
               <div className="result-breakdown">
-                <h2>Break Up Total Payment</h2>
+                <h1 className="section-title">Break Up Total Payment</h1>
 
                 <div className="pie-chart-container">
                   <div className="pie-chart">
@@ -466,7 +505,7 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
                           cy="50"
                           r="40"
                           fill="transparent"
-                          stroke="#00a0f0"
+                          stroke="#00B1FF"
                           strokeWidth="20"
                           strokeDasharray={`${principalPercentage * 2.51} ${
                             (100 - principalPercentage) * 2.51
@@ -479,7 +518,7 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
                           cy="50"
                           r="40"
                           fill="transparent"
-                          stroke="#083277"
+                          stroke="#98DEFD"
                           strokeWidth="20"
                           strokeDasharray={`${interestPercentage * 2.51} ${
                             (100 - interestPercentage) * 2.51
@@ -492,8 +531,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
                           y="45"
                           textAnchor="middle"
                           fill="#333"
-                          fontSize="6"
-                          fontWeight="bold"
+                          fontSize="7"
+                          fontWeight="700"
                         >
                           Loan Amount
                         </text>
@@ -502,8 +541,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
                           y="55"
                           textAnchor="middle"
                           fill="#333"
-                          fontSize="6"
-                          fontWeight="bold"
+                          fontSize="7"
+                          fontWeight="700"
                         >
                           ₹ {loanAmount.toLocaleString()}
                         </text>
@@ -512,21 +551,33 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
                   </div>
 
                   <div className="payment-breakdown">
-                    <div className="breakdown-item principal">
-                      <span className="dot principal-dot"></span>
-                      <span className="label">Principal Amount</span>
-                      <span className="value">{formatCurrencyWithDecimal(loanAmount)}</span>
+                    <div className="breakdown-item">
+                      <div className="breakdown-label">
+                        <span className="dot principal-dot"></span>
+                        <span>Principal Amount</span>
+                      </div>
+                      <div className="breakdown-value">₹ {loanAmount.toLocaleString()}.00</div>
                     </div>
 
-                    <div className="breakdown-item interest">
-                      <span className="dot interest-dot"></span>
-                      <span className="label">Interest</span>
-                      <span className="value">{formatCurrencyWithDecimal(totalInterest)}</span>
+                    <div className="breakdown-item">
+                      <div className="breakdown-label">
+                        <span className="dot interest-dot"></span>
+                        <span>Interest</span>
+                      </div>
+                      <div className="breakdown-value">₹ {totalInterest.toFixed(2)}</div>
                     </div>
 
                     <div className="breakdown-item total">
-                      <span className="label">Total Payment</span>
-                      <span className="value">{formatCurrencyWithDecimal(totalAmount)}</span>
+                      <div className="breakdown-label">
+                        <span>Total Payment</span>
+                      </div>
+                      <div className="breakdown-value">
+                        ₹{' '}
+                        {(loanAmount + totalInterest).toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -536,8 +587,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
                   <div className="emi-amount">{formatCurrency(monthlyEMI)}/-</div>
                 </div>
 
-                <button onClick={handleApplyNow} className="btn btn-primary">
-                  Apply Now <span className="arrow">→</span>
+                <button onClick={handleApplyNow} className="btn btn-primary-icon">
+                  Apply Now <span className="btn-icon">›</span>
                 </button>
               </div>
             </div>
@@ -570,6 +621,28 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
               </div>
 
               <div className="input-field">
+                <label htmlFor="net-income">Monthly Obligation</label>
+                <div className="value-display">
+                  <span className="currency-symbol">₹</span>
+                  <span className="display-value">{monthlyObligation.toLocaleString()}</span>
+                </div>
+                <div className="range-slider">
+                  <input
+                    type="range"
+                    min={currentConfig.minMonthlyObligation}
+                    max={currentConfig.maxMonthlyObligation}
+                    value={monthlyObligation}
+                    onChange={(e) => setMonthlyObligation(Number(e.target.value))}
+                    className="slider"
+                  />
+                  <div className="range-values">
+                    <span>₹ {currentConfig.minMonthlyObligation.toLocaleString()}</span>
+                    <span>₹ {currentConfig.maxMonthlyObligation.toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="input-field">
                 <label htmlFor="interest-rate">Interest Rate</label>
                 <div className="value-display">
                   <span className="display-value">{interestRate}</span>
@@ -593,23 +666,25 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
               </div>
 
               <div className="input-field">
-                <label htmlFor="loan-tenure">Loan Tenure</label>
-                <div className="tenure-type-selector">
-                  <button
-                    className={durationType === 'Months' ? 'active' : ''}
-                    onClick={() => toggleDurationType('Months')}
-                  >
-                    Months
-                  </button>
-                  <button
-                    className={durationType === 'Year' ? 'active' : ''}
-                    onClick={() => toggleDurationType('Year')}
-                  >
-                    Year
-                  </button>
-                </div>
-                <div className="value-display" style={{ top: '0', right: '0' }}>
-                  <span className="display-value">{loanDuration}</span>
+                <div className="tenure-display">
+                  <label htmlFor="loan-tenure">Loan Tenure</label>
+                  <div className="tenure-type-selector">
+                    <button
+                      className={durationType === 'Year' ? 'active' : ''}
+                      onClick={() => toggleDurationType('Year')}
+                    >
+                      Year
+                    </button>
+                    <button
+                      className={durationType === 'Months' ? 'active' : ''}
+                      onClick={() => toggleDurationType('Months')}
+                    >
+                      Months
+                    </button>
+                  </div>
+                  <div className="value-display" style={{ top: '0', right: '0' }}>
+                    <span className="display-value">{loanDuration}</span>
+                  </div>
                 </div>
                 <div className="range-slider">
                   <input
@@ -646,8 +721,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
 
             <div className="calculator-results eligibility-results">
               <div className="result-breakdown">
-                <h2>Congratulations!!</h2>
-                <h3>You are eligible for loan Upto</h3>
+                <h1 className="section-title">Congratulations!!</h1>
+                <h1 className="section-title">You are eligible for loan Upto</h1>
 
                 <div className="eligibility-info">
                   <div className="total-loan-amount">
@@ -660,8 +735,8 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
                     <div className="emi-amount">{formatCurrency(eligibleEMI)}/-</div>
                   </div>
 
-                  <button onClick={handleApplyNow} className="btn btn-primary">
-                    Apply Now <span className="arrow">→</span>
+                  <button onClick={handleApplyNow} className="btn btn-primary-icon">
+                    Apply Now <span className="btn-icon">›</span>
                   </button>
                 </div>
               </div>

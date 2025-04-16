@@ -1,6 +1,7 @@
 .home-page {
   min-height: 100vh;
   overflow-x: hidden;
+  padding: 10px 0 0 0;
 }
 
 /* Hero Section Styles */
