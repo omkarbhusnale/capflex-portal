@@ -1,0 +1,105 @@
+.eligibility-page {
+  width: 100%;
+  padding: 3rem 0;
+}
+
+.page-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.page-description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: var(--secondary-color);
+  line-height: 1.6;
+}
+
+.eligibility-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.eligibility-form {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.eligibility-result {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eligibility-result h2 {
+  margin-bottom: 1rem;
+}
+
+.eligibility-result p {
+  margin-bottom: 1.5rem;
+}
+
+.eligibility-result.eligible {
+  border-top: 4px solid #4caf50;
+}
+
+.eligibility-result.ineligible {
+  border-top: 4px solid #f44336;
+}
+
+.loan-amount {
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.loan-amount span {
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.form-group select,
+input textarea {
+  background-color: rgb(240, 248, 255);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .eligibility-page {
+    padding: 2rem 0;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .page-description {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .eligibility-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .eligibility-result {
+    order: -1;
+  }
+}

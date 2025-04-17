@@ -14,15 +14,13 @@ const EMICalculator = ({
   subtitle = 'Plan Your EMI',
 }: EMICalculatorProps) => {
   const [searchParams] = useSearchParams();
-  const defaultType = searchParams.get('calc') === 'eligibility' ? 'eligibility' : 'emi';
+  const defaultType = searchParams.get('calc') === 'emi' ? 'emi' : 'eligibility';
 
   return (
     <section className="emi-calculator-section">
-      <div className="container">
-        {subtitle && <div className="emi-subtitle">{subtitle}</div>}
-        <h2 className="emi-title">{title}</h2>
-        <LoanCalculator defaultType={defaultType} />
-      </div>
+      {subtitle && <div className="emi-subtitle">{subtitle}</div>}
+      <h2 className="emi-title">{title}</h2>
+      <LoanCalculator defaultType={defaultType} />
     </section>
   );
 };

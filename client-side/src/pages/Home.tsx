@@ -57,8 +57,9 @@ const Home = () => {
       {/* Testimonials Section */}
       <section className="section testimonials-section">
         <div className="container">
+          <h3 className="section-subtitle">Testimonials</h3>
           <h2 className="section-title">What Our Customer's Say</h2>
-          <Testimonials />
+          <Testimonials showAll={false} />
           <div className="text-center">
             <Link to="/testimonials" className="btn-primary-icon">
               View All <span className="btn-icon">›</span>
