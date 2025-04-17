@@ -70,9 +70,9 @@ const Navbar = () => {
                     <path
                       d="M16 10L12 14L8 10"
                       stroke="white"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </span>
@@ -115,18 +115,21 @@ const Navbar = () => {
                     <path
                       d="M16 10L12 14L8 10"
                       stroke="white"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </span>
               </span>
               <div className={`dropdown-content ${activeDropdown === 'resources' ? 'show' : ''}`}>
-                <Link to="/resources/emi-calculator" onClick={() => setMenuOpen(false)}>
+                <Link to="/resources/emi-calculator?calc=emi" onClick={() => setMenuOpen(false)}>
                   EMI Calculator
                 </Link>
-                <Link to="/resources/eligibility-calculator" onClick={() => setMenuOpen(false)}>
+                <Link
+                  to="/resources/eligibility-calculator?calc=eligibility"
+                  onClick={() => setMenuOpen(false)}
+                >
                   Eligibility Calculator
                 </Link>
                 <Link to="/resources/apply-now" onClick={() => setMenuOpen(false)}>

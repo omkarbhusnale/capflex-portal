@@ -1,7 +1,7 @@
 .company-intro-section {
   padding: 4rem 0;
   background-color: var(--white);
-  margin: 8rem 0;
+  margin: 8rem 0 2rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

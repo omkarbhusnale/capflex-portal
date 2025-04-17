@@ -58,7 +58,7 @@
 
 .select-dropdown {
   position: relative;
-  width: 200px;
+  width: auto;
   max-width: 100%;
   z-index: 10;
 }
