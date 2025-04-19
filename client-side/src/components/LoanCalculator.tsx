@@ -281,9 +281,13 @@ const LoanCalculator = ({ defaultType = 'emi', className = '' }: LoanCalculatorP
   const calculateEligibility = () => {
     // Typically, banks allow 40-50% of monthly income for EMI payments
     // Subtract monthly obligations to get actual available amount for loan EMI
-    const monthlyAllowedAmount = netIncome * 0.5 - monthlyObligation;
+    // const monthlyAllowedAmount = netIncome * 0.5 - monthlyObligation;
+
+    // TODO : (NetIncome - obligation) % 70
+    const monthlyAllowedAmount = (netIncome - monthlyObligation) * 0.7;
 
     const monthlyInterestRate = interestRate / 100 / 12;
+
     const totalMonths = durationType === 'Year' ? loanDuration * 12 : loanDuration;
 
     if (monthlyAllowedAmount <= 0 || totalMonths <= 0 || monthlyInterestRate <= 0) {
