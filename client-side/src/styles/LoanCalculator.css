@@ -173,17 +173,17 @@
 
 /* Calculator Body */
 .calculator-body {
-  padding: 20px;
+  padding: 5px;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 30px;
   box-shadow: 0 1px 10px rgba(8, 5, 5, 0.2);
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .calculator-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
 }
@@ -206,17 +206,23 @@
   display: block;
   font-size: 18px;
   font-weight: 600;
-  color: #003277;
+  color: var(--primary-color);
   margin-bottom: 15px;
   float: none;
   text-align: left;
 }
 
 .value-display {
-  display: block;
-  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--dark);
+  border-radius: 10px;
+  width: 160px;
+  padding: 6px;
+  font-size: 20px;
   font-weight: 600;
-  color: #ff3b3b;
+  color: var(--dark);
   margin-bottom: 15px;
   float: none;
   text-align: right;
@@ -236,12 +242,12 @@
 }
 
 .currency-symbol {
-  color: #ff3b3b;
+  color: var(--dark);
   font-weight: 500;
 }
 
 .percent-symbol {
-  color: #ff3b3b;
+  color: var(--dark);
   font-weight: 500;
 }
 
@@ -462,7 +468,7 @@
 /* Monthly EMI Box */
 .monthly-emi {
   margin-top: 30px;
-  background-color: #083277;
+  background-color: var(--primary-color);
   padding: 20px;
   border-radius: 12px;
   text-align: center;
@@ -509,7 +515,7 @@
 /* Eligibility Info */
 .eligibility-info {
   text-align: center;
-  padding: 50px;
+  padding: 0 60px 0 60px;
 }
 
 .eligibility-info h3 {
@@ -518,7 +524,7 @@
 }
 
 .eligibility-info p {
-  color: #666;
+  color: var(--dark-gray);
 }
 
 /* Eligibility Calculator Styles */
@@ -549,7 +555,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 1px;
 }
 
 .total-loan-amount,
